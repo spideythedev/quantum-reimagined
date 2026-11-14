@@ -85,7 +85,7 @@ quantum-reimagined/
 
 ---
 
-Contributing
+## Contributing
 
 Contributions, suggestions, and feedback are welcome.
 
@@ -99,7 +99,7 @@ Please keep contributions consistent with the project's visual direction and mai
 
 ---
 
-Inspiration & Acknowledgements
+## Inspiration & Acknowledgements
 
 Quantum Reimagined is an independent VS Code theme project inspired by the original Quantum VS Code Theme, created by Caleb Ephrem.
 
@@ -111,7 +111,7 @@ Original project: https://github.com/calebephrem/quantum-vscode
 
 ---
 
-License
+## License
 
 Quantum Reimagined is released under the MIT License.
 
@@ -119,7 +119,7 @@ See the LICENSE file for details.
 
 ---
 
-Author
+## Author
 
 Fahad Malik (SpydeY)
 
