@@ -1,0 +1,31 @@
+# Development dependencies
+node_modules/**
+.pnpm-store/**
+.pnpm-debug.log
+
+# Git files
+.git/**
+.gitignore
+.gitattributes
+
+# GitHub workflows and metadata
+.github/**
+.vscode/**
+.editorconfig
+
+# Development configuration
+.prettierrc*
+.eslintrc*
+eslint.config.*
+tsconfig.json
+*.map
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Temporary and log files
+*.log
+.DS_Store
+Thumbs.db
