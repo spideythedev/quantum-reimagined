@@ -1,0 +1,81 @@
+{
+  "name": "quantum-reimagined",
+  "displayName": "Quantum Reimagined \u2014 Sub-Pixel Architecture",
+  "description": "World-first multi-dimensional VS Code theme engine built on Ocular Luminance Hierarchy, Sub-Surface Glassmorphism, and Perceptual Depth Mapping.",
+  "version": "2.0.0",
+  "publisher": "spideythedev",
+  "author": {
+    "name": "Fahad Malik (SpydeY)",
+    "url": "https://spideythedev.vercel.app"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/spideythedev/quantum-reimagined"
+  },
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "quantum",
+    "dark theme",
+    "oled",
+    "cyberpunk",
+    "glassmorphism",
+    "minimal",
+    "spideythedev",
+    "semantic"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Quantum Reimagined: QuantumSolar",
+        "uiTheme": "vs-dark",
+        "path": "./themes/quantum-solar-v2.json"
+      },
+      {
+        "label": "Quantum Reimagined: Sonic",
+        "uiTheme": "vs-dark",
+        "path": "./themes/sonic-v2.json"
+      },
+      {
+        "label": "Quantum Reimagined: Hydrogen",
+        "uiTheme": "vs-dark",
+        "path": "./themes/hydrogen-v2.json"
+      },
+      {
+        "label": "Quantum Reimagined: Carbon",
+        "uiTheme": "vs-dark",
+        "path": "./themes/carbon-v2.json"
+      },
+      {
+        "label": "Quantum Reimagined: Argon",
+        "uiTheme": "vs-dark",
+        "path": "./themes/argon-v2.json"
+      },
+      {
+        "label": "Quantum Reimagined: Geco",
+        "uiTheme": "vs-dark",
+        "path": "./themes/geco-v2.json"
+      },
+      {
+        "label": "Quantum Reimagined: Terminator",
+        "uiTheme": "vs-dark",
+        "path": "./themes/terminator-v2.json"
+      },
+      {
+        "label": "Quantum Reimagined: Mars",
+        "uiTheme": "vs-dark",
+        "path": "./themes/mars-v2.json"
+      },
+      {
+        "label": "Quantum Reimagined: Elliptical",
+        "uiTheme": "vs-dark",
+        "path": "./themes/elliptical-v2.json"
+      }
+    ]
+  }
+}
