@@ -1,5 +1,7 @@
 # Quantum Reimagined
 
+![QR](./images/quantum-reimagined.png)
+
 ### A new visual direction for your VS Code workspace.
 
 Quantum Reimagined is a collection of carefully designed Visual Studio Code themes, exploring different color environments and visual identities while keeping your editor comfortable and readable.
