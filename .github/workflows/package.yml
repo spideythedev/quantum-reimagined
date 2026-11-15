@@ -6,13 +6,18 @@ on:
   push:
     branches:
       - main
+    tags:
+      - "v*"
+  pull_request:
+    branches:
+      - main
 
 permissions:
   contents: read
 
 jobs:
   package:
-    name: Package VS Code Extension
+    name: Validate and Package VS Code Extension
     runs-on: ubuntu-latest
 
     steps:
@@ -24,25 +29,51 @@ jobs:
         with:
           node-version: 22
 
-      - name: Install VSCE
-        run: npm install -g @vscode/vsce@latest
-
-      - name: Validate package
+      - name: Validate package and themes
         run: |
-          node -e "
-            const p = require('./package.json');
-            if (p.name !== 'quantum-reimagined') throw Error('Invalid name');
-            if (p.publisher !== 'spideythedev') throw Error('Invalid publisher');
-            if (p.contributes.themes.length !== 9) throw Error('Expected 9 themes');
-          "
+          node <<'NODE'
+          const fs = require('node:fs');
+          const path = require('node:path');
+
+          const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+
+          if (pkg.name !== 'quantum-reimagined') throw Error('Invalid name');
+          if (pkg.publisher !== 'spideythedev') throw Error('Invalid publisher');
+
+          const themes = pkg.contributes?.themes;
+          if (!Array.isArray(themes) || themes.length !== 9) {
+            throw Error('Expected exactly 9 themes');
+          }
+
+          const labels = new Set();
+
+          for (const theme of themes) {
+            if (!theme.label || labels.has(theme.label)) {
+              throw Error('Missing or duplicate theme label');
+            }
+
+            labels.add(theme.label);
+
+            const file = path.resolve(theme.path);
+            if (!fs.existsSync(file)) throw Error(`Missing: ${theme.path}`);
+
+            JSON.parse(fs.readFileSync(file, 'utf8'));
+            console.log('Validated:', theme.path);
+          }
+
+          console.log('All 9 themes validated.');
+          NODE
+
+      - name: Install VSCE
+        run: npm install --global @vscode/vsce
 
       - name: Package extension
         run: vsce package
 
-      - name: Upload VSIX
+      - name: Upload VSIX artifact
         uses: actions/upload-artifact@v4
         with:
           name: quantum-reimagined-vsix
-          path: '*.vsix'
+          path: "*.vsix"
           if-no-files-found: error
           retention-days: 30
