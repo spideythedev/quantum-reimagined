@@ -1,0 +1,48 @@
+
+name: Build Quantum Reimagined
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    name: Package VS Code Extension
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install VSCE
+        run: npm install -g @vscode/vsce@latest
+
+      - name: Validate package
+        run: |
+          node -e "
+            const p = require('./package.json');
+            if (p.name !== 'quantum-reimagined') throw Error('Invalid name');
+            if (p.publisher !== 'spideythedev') throw Error('Invalid publisher');
+            if (p.contributes.themes.length !== 9) throw Error('Expected 9 themes');
+          "
+
+      - name: Package extension
+        run: vsce package
+
+      - name: Upload VSIX
+        uses: actions/upload-artifact@v4
+        with:
+          name: quantum-reimagined-vsix
+          path: '*.vsix'
+          if-no-files-found: error
+          retention-days: 30
