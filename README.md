@@ -117,7 +117,7 @@ Original project: https://github.com/calebephrem/quantum-vscode
 
 Quantum Reimagined is released under the MIT License.
 
-See the LICENSE(LICENSE) file for details.
+See the [LICENSE](LICENSE) file for details.
 
 ---
 
